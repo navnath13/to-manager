@@ -1,0 +1,8 @@
+#AddImage{
+    background: url("https://images.pexels.com/photos/352096/pexels-photo-352096.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    height: auto;
+    width: 100%;
+    background-size: 100% 100%;
+    background-blend-mode: color;
+
+}
