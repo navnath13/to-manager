@@ -1,11 +1,11 @@
-<div class="card mt-3" *ngFor="let to of todo" [ngClass]="{'bg-success':to.complete,'text-white':to.complete,'bg-warning':!to.complete}">
+<div class="card mt-3" [ngClass]="{'bg-success':todo.complete,'text-white':todo.complete || !todo.complete,'bg-dark':!todo.complete}">
     <div class="card-body" >
-        <h3>{{to.title}}</h3>
-        <p>{{to.content}}</p>
+        <h3>{{todo.title}}</h3>
+        <p >{{todo.content}}</p>
         <div>
  
-  <div class="btn btn-primary btn-sm" [routerLink]="'/updatetodo'">update</div>
-            <div class="btn btn-danger ms-2 btn-sm" >delete</div>
+  <div class="btn btn-primary btn-sm" [routerLink]="'/updatetodo/'+todo.id">update</div>
+            <div class="btn btn-danger ms-2 btn-sm" (click)="deleteTodo(todo.id)">delete</div>
         </div>
     </div>
 

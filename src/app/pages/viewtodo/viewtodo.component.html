@@ -3,11 +3,18 @@
 
 <div class="container">
     <div class="row">
-        <div class="container">
+        <div class="col-md-8 offset-md-2">
             <div class="card border-0 shadow-sm my-4">
-                <div class="cord-body mx-2 my-2">
+                <div class="cord-body border-0 shadow mx-2 my-2">
+
                     <h3>All Todos</h3>
-                    <app-todo-view></app-todo-view>
+                    <div class="alert alert-danger text-center" *ngIf="todos.length==0">
+                        <h3>No Todos are present </h3>
+                        <p>try to add new todo</p>
+                        <button class="btn btn-outline-success btn-sm" [routerLink]="'/addtodo'">Add new Todo</button>
+                    </div>
+                    
+                    <app-todo-view *ngFor="let todo of todos" [todo]="todo" (deleteEvent)="deleteEventFormChild($event)"></app-todo-view>
                 </div>
             </div>
 

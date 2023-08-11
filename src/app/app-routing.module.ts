@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'addtodo',
   component:AddTodoComponent,
   title:'addtodo'},
-  {path:'updatetodo',
+  {path:'updatetodo/:id',
   component:UpdateTodoComponent,
   title:'udpatetodo'
 },

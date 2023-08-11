@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/model/todo';
 import { TodoserviceService } from 'src/app/services/todoservice.service';
 
@@ -10,27 +10,24 @@ import { TodoserviceService } from 'src/app/services/todoservice.service';
 })
 export class TodoViewComponent implements OnInit{
 
-todo: Todo[]=[];
+@Input() todo:Todo=new Todo();
+
+@Output() deleteEvent:EventEmitter<string>=new EventEmitter();
   constructor(private http:TodoserviceService){}
-  ngOnInit(): void {
-    this.http.getTodo().subscribe({next:(data)=>{
-      console.log(data)
-      this.todo=data;
-      },
-      error:(error)=>{
-        console.log("something went to wrong")
-      },
-      complete:()=>{
-      }
+  ngOnInit(): void {}
 
+
+  deleteTodo(id:any){
+
+    this.http.deleteTodo(id).subscribe((data)=>{
+      alert("do you want delete todo");
+
+    this.deleteEvent.next(id);
+     // window.location.reload();
+    },
+    (error)=>{
+      alert("some thing went to wrong")
     })
- 
-    
-  }
-
-
-  deleteTodo(id:number){
-
   }
 
 }
